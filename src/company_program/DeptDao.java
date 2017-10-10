@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 import company_program.DBCon;
 import company_program.JdbcUtil;
-import jdbc_study.dto.Department;
+import company_program.Department;
 
 public class DeptDao {
 	private static final DeptDao instance = new DeptDao();
