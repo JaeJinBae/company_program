@@ -22,7 +22,7 @@ public class DeptDao {
 	private Connection con;
 
 	static List<Department> lists;
-	Manager manager;
+	Manager manager = new Manager();
 
 	private DeptDao() {
 	}
@@ -45,16 +45,16 @@ public class DeptDao {
 		return datas;
 
 	}
+
 	public Department searchDept(Department dept) {
 		Department department = null;
 		sql = "select * from department where deptno=?";
 		try {
-
 			pstmt = DBCon.getInstance().getConn().prepareStatement(sql);
 			pstmt.setInt(1, dept.getDeptNo());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				department = new Department(rs.getInt("deptno"), rs.getString("deptname"), rs.getInt("deptfloor"));
+				department = new Department(rs.getInt("deptno"), rs.getString("deptname"), rs.getInt("floor"));
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -149,5 +149,4 @@ public class DeptDao {
 		}
 	}
 
-	
 }

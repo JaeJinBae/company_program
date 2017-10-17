@@ -38,7 +38,7 @@ public class Manager extends JFrame implements ActionListener {
 	private JButton btnOk;
 	private JButton btnCancel;
 	private JTable table;
-	
+
 	public Manager() {
 
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -111,18 +111,16 @@ public class Manager extends JFrame implements ActionListener {
 
 	private void do_btnOk_actionPerformed(ActionEvent e) {
 		if (btnOk.getText().equals("추가")) {
-			Department dept = new Department(Integer.parseInt(tfDeptNo.getText()),
-											tfDeptName.getText(), 
-											Integer.parseInt(tfDeptFloor.getText()));
+			Department dept = new Department(Integer.parseInt(tfDeptNo.getText()), tfDeptName.getText(),
+					Integer.parseInt(tfDeptFloor.getText()));
 			deptdao.addDept(dept);
 			do_btnCancel_actionPerformed(e);
 			table.setModel(new DefaultTableModel(DeptDao.showDepartment(), COL_NAMES));
 			scrollPane.setViewportView(table);
 		}
 		if (btnOk.getText().equals("수정")) {
-			Department dept = new Department(Integer.parseInt(tfDeptNo.getText()), 
-											tfDeptName.getText(), 
-											Integer.parseInt(tfDeptFloor.getText()));
+			Department dept = new Department(Integer.parseInt(tfDeptNo.getText()), tfDeptName.getText(),
+					Integer.parseInt(tfDeptFloor.getText()));
 			deptdao.updateDept(dept);
 			do_btnCancel_actionPerformed(e);
 			table.setModel(new DefaultTableModel(DeptDao.showDepartment(), COL_NAMES));
